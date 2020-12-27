@@ -26,7 +26,7 @@ function App() {
     }
     else{
       setItems(oldItems => [...popular.data.results])
-      setHeader('popular movie');
+      setHeader('popular movies');
 
     }
           }, [searchText,page])
@@ -50,7 +50,7 @@ function App() {
           setSearchText('')
          },items: items, page:page, morePage:()=>setPage(prev=>prev+1)}}>
     <div>
-
+hello world!!!
      <Navbar header={header} restart={()=>{
        setPage(1)
        setSearchText('')
