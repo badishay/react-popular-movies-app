@@ -1,57 +1,25 @@
+import logo from './logo.svg';
 import './App.css';
-import {Switch, Route, useHistory} from 'react-router-dom'
-import React, {useState,useEffect} from 'react'
-import Navbar from './components/Navbar'
-import MovieList from './components/MovieList'
-import MovieDetails from './components/MovieDetails'
-import MyContext from './components/myContext'
-import axios from 'axios'
-
 
 function App() {
-  const [searchText,setSearchText] = useState('');
-
-  const [items,setItems] =useState([])
-  const [page,setPage] = useState(1)
-
-  useEffect(async() => {
-      const apiKey='fd2a4c25ac9eda692e330c4d102133e2'
-      const popular= await axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=${page}`);
-     
-      if(searchText){
-        setPage(1);
-        const find= await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${searchText.replace(' ','+')}&language=en-US`);
-        setItems([...find.data.results]);
-    }
-    else{
-      setItems(oldItems => [...popular.data.results])
-    }
-          }, [searchText,page])
-  
-
-  // useEffect(async() => {
-  //   if(searchText){
-  //   const apiKey='fd2a4c25ac9eda692e330c4d102133e2'
-  //   const find=`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${searchText.replace(' ','+')}&language=en-US`
-  //   const res=await axios.get(find);
-  //   setSearchList(res.data.results);
-  //   // res.data.results.map(x=>console.log(x.id,x.title));
-  //   }
-  //   }, [searchText])
-
-  // let history=useHistory()
   return (
-      <MyContext.Provider value={{text:searchText, 
-        callback:(text)=>setSearchText(text), restart:()=>{
-          setPage(1)
-          setSearchText('')
-         },items: items, page:page, morePage:()=>setPage(prev=>prev+1)}}>
-    <div>
-
-    hello world
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          <h1 className='p-1' >hello from yishai badichi</h1>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
     </div>
-    </MyContext.Provider>
-
   );
 }
 
