@@ -7,7 +7,7 @@ function MovieDetails() {
     const [genres,setGenres]= useState([]);
     const [year,setYear]= useState('');
     const [trailerKey,setTrailerKey]= useState('');
-    const {id}= useParams()
+    const {id}= useParams();
     const apiKey='fd2a4c25ac9eda692e330c4d102133e2'
     
     useEffect(async() => {
