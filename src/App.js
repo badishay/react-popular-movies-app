@@ -12,7 +12,7 @@ function App() {
       <header className="App-header">
         {/* <img src={logo} className="App-logo" alt="logo" /> */}
         <p>
-          <h1 className='p-1' >hello from y badichi</h1>
+          <h1 className='p-5' >hello from y badichi</h1>
           Edit <code>src/App.js</code> and save to reload.
         </p>
         <a
