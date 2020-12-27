@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react'
 import {useParams} from 'react-router-dom'
-import { Image, Label } from 'tailwind-react-ui'
 import axios from 'axios'
 function MovieDetails() {
     const [movie,setMovie]= useState({});
@@ -61,7 +60,7 @@ function MovieDetails() {
                    {cast.map(actor=> actor.profile_path?
                   ( <span className='flex-none w-1/12 m-5 opacity-70 text-transparent hover:text-gray-200 text-sm'>
                         <img src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`}  className=' opacity-70  mx-3 hover:opacity-95  rounded-lg shadow-2xl'   alt='actor'/>
-                         <Label className='ml-3'>{actor.name}</Label>
+                         <p className='ml-3'>{actor.name}</p>
                     </span>)
                         :null)}
             </div>
