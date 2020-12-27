@@ -10,7 +10,7 @@ function App() {
   const [searchText,setSearchText] = useState('');
 
   const [items,setItems] =useState([])
-  const [page,setPage] = useState(1)
+  const [page,setPage] = useState(2)
 
   useEffect(async() => {
       const apiKey='fd2a4c25ac9eda692e330c4d102133e2'
