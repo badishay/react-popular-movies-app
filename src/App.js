@@ -1,5 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
+import {Switch, Route, useHistory} from 'react-router-dom'
+import React, {useState,useEffect} from 'react'
+import Navbar from './components/Navbar'
+import MovieList from './components/MovieList'
+import MovieDetails from './components/MovieDetails'
+import MyContext from './components/myContext'
+import axios from 'axios'
+
 
 function App() {
   return (
