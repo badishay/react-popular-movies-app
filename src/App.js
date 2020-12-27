@@ -9,8 +9,10 @@ import axios from 'axios'
 function App() {
   const [searchText,setSearchText] = useState('');
 
-  const [items,setItems] =useState([])
-  const [page,setPage] = useState(2)
+  const [items,setItems] =useState([]);
+  const [page,setPage] = useState(1);
+  const [header,setHeader] = useState('popular movies');
+ 
 
   useEffect(async() => {
       const apiKey='fd2a4c25ac9eda692e330c4d102133e2'
@@ -20,9 +22,12 @@ function App() {
         setPage(1);
         const find= await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${searchText.replace(' ','+')}&language=en-US`);
         setItems([...find.data.results]);
+        setHeader('search results');
     }
     else{
       setItems(oldItems => [...popular.data.results])
+      setHeader('popular movie');
+
     }
           }, [searchText,page])
   
@@ -46,7 +51,7 @@ function App() {
          },items: items, page:page, morePage:()=>setPage(prev=>prev+1)}}>
     <div>
 
-     <Navbar restart={()=>{
+     <Navbar header={header} restart={()=>{
        setPage(1)
        setSearchText('')
       }

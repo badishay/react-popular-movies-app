@@ -39,7 +39,7 @@ function MovieDetails() {
   }}>
       <div className='bg-gray-500 bg-opacity-70'>
           {/* <Image src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`} className=' opacity-50 p-0  '  alt='movie'> */}
-              <div className=' text-gray-900  flex flex-row '  >
+              <div className=' text-gray-900 flex flex-warp '  >
                 <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} className=' w-1/5 h-full m-10 mt-10 shadow-2xl '   alt='movie'/>
                 <div className='mt-10 bg-gradient-to-r from-gray-200 via-gray-300 to-transperent hover:from-gray-100 hover:via-gray-200 bg-opacity-10 hover:bg-opacity-40  p-7 w-2/5 h-1/2'>
                     <p className='text-4xl text-gray-900 font-extrabold font-sans mb-2 '> {movie.title} <p className='font-normal text-2xl'>{year}</p></p>
@@ -47,13 +47,10 @@ function MovieDetails() {
                         {genres.map(genre=><div className=' px-3 font-bold'>{genre.name}</div>)}
                     </div>
                     {movie.overview?<p className='h-auto  tracking-wide font-semibold text-sm'><header className='font-bold mb-2 text-2xl'>overview</header> {movie.overview}</p>:null}
-                    
-                {/* <img src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`} className='opacity-30 w-3/4 '  alt='movie'/> */}
                 </div>
-                {/* <iframe src={`https://youtu.be/${trailerKey}`}/> */}
                 {trailerKey?
-                    <iframe className='my-10 ml-10 mr-0 opacity-60 rounded w-80 h-64 hover:opacity-100 hover:scale-150 hover:-translate-x-32 hover:translate-y-10 delay-150 duration-300 transform  '   src={`https://www.youtube.com/embed/${trailerKey}`} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    :null}
+                    <iframe className='my-10 ml-5 mr-10 opacity-60 rounded w-96 h-72 hover:opacity-100 hover:scale-150 hover:-translate-x-32 hover:translate-y-10 delay-150 duration-300 transform  '   src={`https://www.youtube.com/embed/${trailerKey}`} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                     :null}
             </div >
             <div className=' flex  bg-gray-900 bg-opacity-50 '>
                 {/* <div className='font-mono font-bold italic text-white shadow-2xl text-3xl'>Actors</div> */}

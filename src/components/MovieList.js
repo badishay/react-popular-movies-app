@@ -17,7 +17,7 @@ const MovieList = (props) => {
         
             <div className='bg-galaxy min-h-screen'>
                 <div className='container flex flex-wrap justify-center min-w-full m-0  px-2 pb-10'>
-                    {context.items.map(item=><MovieItem  key={item.id} item={item}/>)
+                    {context.items.map(item=><MovieItem   key={item.id} item={item}/>)
                      }
                 </div>
                 <div className='flex justify-center'>  
