@@ -48,27 +48,7 @@ function App() {
          },items: items, page:page, morePage:()=>setPage(prev=>prev+1)}}>
     <div>
 
-     <Navbar restart={()=>{
-       setPage(1)
-       setSearchText('')
-      }
-       } />
-        {/* <input type='button' value='home' className='w-screen h-1/2' onClick={()=>history.push('/')}></input> */}
-
-     <Switch  style={{width:'100%', height:'100%'}} >
-          <Route  path='/movies/:id' >
-              <MovieDetails/>
-          </Route>
-
-          {/* <Route  path='/movies/search' >
-              <SearchResults/>
-          </Route> */}
-          
-          <Route path='/'>
-            <MovieList text={searchText}/> 
-          </Route>
-        
-        </Switch>
+    hello world
     </div>
     </MyContext.Provider>
 
