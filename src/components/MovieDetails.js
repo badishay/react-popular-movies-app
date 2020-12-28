@@ -50,8 +50,8 @@ function MovieDetails() {
                     <input type='button' className=' border-2 bg-transparent  text-white text-3xl rounded-full px-2 pb-1 p-1 text-center pt-0 ' value='x' onClick={()=>setShowTrailer(false)}/>
                     {trailer}
                     </div>)
-                      :null}
-                <div className='mt-10 bg-gradient-to-r from-gray-200 via-gray-300 to-transperent hover:from-gray-100 hover:via-gray-200 bg-opacity-10 hover:bg-opacity-40  p-7 w-2/5 h-1/2'>
+                      
+                :<div className='mt-10 bg-gradient-to-r from-gray-200 via-gray-300 to-transperent hover:from-gray-100 hover:via-gray-200 bg-opacity-10 hover:bg-opacity-40  p-7 w-2/5 h-1/2'>
                     <p className='text-4xl text-gray-900 font-extrabold font-sans mb-2 '> {movie.title} <p className='font-normal text-2xl'>{year}</p></p>
                     <div class="flex flex-warp divide-x-2 divide-black ml-0  divide-opacity-40  mb-10 ">
                         {genres.map(genre=><div className=' px-3 font-bold'>{genre.name}</div>)}
@@ -60,11 +60,11 @@ function MovieDetails() {
                      <input type='button' value='trailer >' onClick={()=>setShowTrailer(true)}/>
                      :null}
                     {movie.overview?<p className='h-auto  tracking-wide font-semibold text-sm'><header className='font-bold mb-2 text-2xl'>overview</header> {movie.overview}</p>:null}
-                </div>
+                </div>}
                 
             </div >
             <div className='bg-gray-900 bg-opacity-50 mt-4'>
-                <p className=' bg-black bg-opacity-40 p-2 px-5 text-gray-400 font text-3xl italic font-bold'>cast</p>
+                <p className=' bg-black bg-opacity-40 p-2 px-5 text-gray-400 font text-2xl italic font-bold'>cast</p>
                 {/* <div className='font-mono font-bold italic text-white shadow-2xl text-3xl'>Actors</div> */}
 
                    <div className='flex'>{cast.map(actor=> actor.profile_path?
