@@ -52,14 +52,16 @@ function MovieDetails() {
                     <iframe className='my-10 ml-5 mr-10 opacity-60 rounded w-96 h-72 hover:opacity-100 hover:scale-150 hover:-translate-x-32 hover:translate-y-10 delay-150 duration-300 transform  '   src={`https://www.youtube.com/embed/${trailerKey}`} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                      :null}
             </div >
-            <div className=' flex  bg-gray-900 bg-opacity-50 '>
+            <div className='bg-gray-900 bg-opacity-50 mt-4'>
+                <p className=' bg-black bg-opacity-40 p-2 px-5 text-gray-400 font text-3xl italic font-bold'>cast</p>
                 {/* <div className='font-mono font-bold italic text-white shadow-2xl text-3xl'>Actors</div> */}
-                   {cast.map(actor=> actor.profile_path?
-                  ( <span className='flex-none w-1/12 m-5 opacity-70 text-transparent hover:text-gray-200 text-sm'>
-                        <img src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`}  className=' opacity-70  mx-3 hover:opacity-95  rounded-lg shadow-2xl'   alt='actor'/>
+
+                   <div className='flex'>{cast.map(actor=> actor.profile_path?
+                  ( <span className='flex-none w-1/12 mx-3 mt-2 mb-5 opacity-70 text-transparent hover:text-gray-200 text-sm'>
+                        <img src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`}  className=' opacity-70  hover:opacity-95  rounded shadow-2xl'   alt='actor'/>
                          <p className='ml-3'>{actor.name}</p>
                     </span>)
-                        :null)}
+                        :null)}</div>
             </div>
             
                    </div>
