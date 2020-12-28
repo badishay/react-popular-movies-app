@@ -32,7 +32,7 @@ function MovieDetails() {
         console.log(trailerKey);
     }, [])
 
-    const trailer= (<iframe className=' absolute  w-2/3 h-3/4'   src={`https://www.youtube.com/embed/${trailerKey}`} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>)
+    const trailer= (<iframe className=' '   src={`https://www.youtube.com/embed/${trailerKey}`} frameborder="0" width='600' height='450' allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>)
         
 
     return (
@@ -46,12 +46,12 @@ function MovieDetails() {
               <div className=' text-gray-900 flex flex-warp '  >
                 <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} className=' w-1/5 h-full m-10 mt-10 shadow-2xl '   alt='movie'/>
       {showTrailer? 
-                (<div className=''>
-                    <input type='button' className=' border-2 bg-transparent  text-white text-xl rounded-full px-3 pb-1 p-1 text-center pt-0 ' value='x' onClick={()=>setShowTrailer(false)}/>
+                (<div className='m-10 relative'>
+                    <input type='button' className=' border-2 bg-transparent absolute  text-white text-xl rounded-full px-3 pb-1 p-1 text-center pt-0 ' value='x' onClick={()=>setShowTrailer(false)}/>
                     {trailer}
                     </div>)
                       
-                :<div className='mt-10 bg-gradient-to-r from-gray-200 via-gray-300 to-transperent hover:from-gray-100 hover:via-gray-200 bg-opacity-10 hover:bg-opacity-40  p-7 w-2/5 h-1/2'>
+                :<div className='mt-10 bg-gradient-to-r from-gray-200 via-gray-300 h-3/4 to-transperent hover:from-gray-100 hover:via-gray-200 bg-opacity-10 hover:bg-opacity-40  p-7 w-2/5 '>
                     <p className='text-4xl text-gray-900 font-extrabold font-sans mb-2 '> {movie.title} <p className='font-normal text-2xl'>{year}</p></p>
                     <div class="flex flex-warp divide-x-2 divide-black ml-0  divide-opacity-40  mb-10 ">
                         {genres.map(genre=><div className=' px-3 font-bold'>{genre.name}</div>)}
