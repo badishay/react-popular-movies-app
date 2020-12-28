@@ -11,7 +11,7 @@ const MovieItem = (props) => {
         {
       context=>(
         <div>
-        {props.item.poster_path?(<div className='relative my-7 mx-5 w-52 h-80  transition duration-500  transform hover:-translate-y-1 hover:scale-110 cursor-pointer  bg-gray-600 ease-in-out   rounded-lg  p-1/2 shadow-md content-center' 
+        {props.item.poster_path?(<div className='relative my-7 mx-3 w-52 h-80  transition duration-500  transform hover:-translate-y-1 hover:scale-110 cursor-pointer  bg-gray-600 ease-in-out   rounded-lg  p-1/2 shadow-md content-center' 
         style={{backgroundImage:`url(https://image.tmdb.org/t/p/w500/${props.item.poster_path})`, backgroundPosition: 'center',
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
