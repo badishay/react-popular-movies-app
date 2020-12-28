@@ -11,7 +11,7 @@ function App() {
 
   const [items,setItems] =useState([]);
   const [page,setPage] = useState(1);
-  const [header,setHeader] = useState('popular');
+  const [header,setHeader] = useState('popular movies');
  
 
   useEffect(async() => {
@@ -26,7 +26,7 @@ function App() {
     }
     else{
       setItems(oldItems => [...popular.data.results])
-      setHeader('popular');
+      setHeader('popular movies');
 
     }
           }, [searchText,page])
@@ -50,7 +50,7 @@ function App() {
           setSearchText('')
          },items: items, page:page, morePage:()=>setPage(prev=>prev+1)}}>
     <div>
-     <Navbar header={header} restart={()=>{
+     <Navbar  restart={()=>{
        setPage(1)
        setSearchText('')
       }

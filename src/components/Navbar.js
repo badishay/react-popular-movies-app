@@ -1,6 +1,5 @@
 import React from 'react'
 import { useHistory} from 'react-router-dom'
-import Searchbar from './Searchbar'
 import MyContext from './myContext'
 
 const Navbar = (props) => {
@@ -10,15 +9,15 @@ const Navbar = (props) => {
         <MyContext.Consumer>
         {
       context=>(
-        <div className='cursor-pointer p-2 bg-gradient-to-b from-black via-gray-900 to-gray-800 '>
-            <p className='uppercase text-red-100 text-center tracking-widest  font-extrabold text-3xl p-4' 
-            onClick={
+        <div className=' p-2 bg-black pb-8  '>
+            <div onClick={
                 ()=>{
                 context.restart()
                 history.push('/')
             }
-                }>{props.header}</p>
-            <Searchbar />
+                }><p className='text-red-800 border-solid border-2 border-red-800 hover:text-red-600 hover:border-red-600  border-l-0 text-center py-1 bg-red-50 rounded-r-full  my-5 w-72 italic font-bold text-2xl font-serif cursor-pointer'>my movies app</p>
+                </div>
+           
             
         </div>
          )
