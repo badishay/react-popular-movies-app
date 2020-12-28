@@ -17,8 +17,8 @@ const MovieList = (props) => {
       context=>(
         
             <div className='bg-galaxy min-h-screen '>
-                <div className='uppercase flex justify-between text-red-100 text-center tracking-widest bg-white bg-opacity-20 font-thin  text-2xl p-4' >
-                    <p>{context.text?'search results': 'popular movies'}</p>
+                <div className='uppercase flex justify-between text-center tracking-widest bg-white bg-opacity-20 font-thin  text-2xl p-4' >
+                    <p className='text-red-50'>{context.text?'search results': 'popular movies'}</p>
             {context.text?null:<Searchbar  />}
             </div>
                 <div className='container flex flex-wrap justify-center min-w-full m-0  px-2 pb-10'>
