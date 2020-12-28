@@ -47,7 +47,7 @@ function MovieDetails() {
                 <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} className=' w-1/5 h-full m-10 mt-10 shadow-2xl '   alt='movie'/>
       {showTrailer? 
                 (<div className='m-10 relative focus:outline-none'>
-                    <input type='button' className=' border-4  bg-black bg-opacity-70 focus:outline-none absolute text-red-500 border-red-500 font-bold hover:text-red-400 hover:border-red-400  text-xl rounded-full px-3 pb-1 p-1 text-center pt-0 ' value='x' onClick={()=>setShowTrailer(false)}/>
+                    <input type='button' className=' border-4 cursor-pointer bg-black bg-opacity-70 focus:outline-none absolute text-red-500 border-red-500 font-bold hover:text-red-400 hover:border-red-400  text-xl rounded-full px-3 pb-1 p-1 text-center pt-0 ' value='x' onClick={()=>setShowTrailer(false)}/>
                     {trailer}
                     </div>)
                       
@@ -57,7 +57,7 @@ function MovieDetails() {
                         {genres.map(genre=><div className=' px-3 font-bold'>{genre.name}</div>)}
                     </div>
                     {trailerKey?
-                     <input type='button' value='trailer >' className='px-2 rounded-full font-bold text-yellow-50 bg-red-700 pb-1 cursor-pointer hover:bg-red-600 text-center' onClick={()=>setShowTrailer(true)}/>
+                     <input type='button' value='trailer >' className='px-2 mb-5 rounded-full font-bold text-yellow-50 bg-red-700 pb-1 cursor-pointer hover:bg-red-600 text-center focus:outline-none' onClick={()=>setShowTrailer(true)}/>
                      :null}
                     {movie.overview?<p className='h-auto tracking-wide font-semibold text-sm'><header className='font-bold mb-2 text-2xl'>overview</header> {movie.overview}</p>:null}
                 </div>}
