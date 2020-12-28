@@ -47,7 +47,7 @@ function MovieDetails() {
                 <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} className=' w-1/5 h-full m-10 mt-10 shadow-2xl '   alt='movie'/>
       {showTrailer? 
                 (<div className=''>
-                    <input type='button' className=' border-2 bg-transparent  text-white text-3xl rounded-full px-2 pb-1 p-1 text-center pt-0 ' value='x' onClick={()=>setShowTrailer(false)}/>
+                    <input type='button' className=' border-2 bg-transparent  text-white text-xl rounded-full px-3 pb-1 p-1 text-center pt-0 ' value='x' onClick={()=>setShowTrailer(false)}/>
                     {trailer}
                     </div>)
                       
@@ -64,7 +64,7 @@ function MovieDetails() {
                 
             </div >
             <div className='bg-gray-900 bg-opacity-50 mt-4'>
-                <p className=' bg-black bg-opacity-40 p-2 px-5 text-gray-400 font text-2xl italic font-bold'>cast</p>
+                <p className=' bg-black bg-opacity-40 p-2 px-5 text-gray-400 font text-3xl italic font-bold'>cast</p>
                 {/* <div className='font-mono font-bold italic text-white shadow-2xl text-3xl'>Actors</div> */}
 
                    <div className='flex'>{cast.map(actor=> actor.profile_path?
