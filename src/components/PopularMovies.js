@@ -17,11 +17,11 @@ const PopularMovies = (props) => {
       context=>(
         
             <div className='bg-galaxy min-h-screen ' >
-                <div className='uppercase fixed mt-16  z-10 w-full  text-center tracking-widest bg-black bg-opacity-80 font-thin  text-xl p-3' >
+                <div className='uppercase fixed mt-16 cursor-default  z-10 w-full  text-center tracking-widest bg-black bg-opacity-80 font-thin  text-xl  pb-3' >
             {context.text?null:<Searchbar />}
-                    <p className='text-red-50 '>{context.text?'search results': 'popular movies'}</p>
+                    <p className='text-red-500 '>{context.text?'search results': 'popular movies'}</p>
             </div >
-                <div className='container   flex flex-wrap justify-center min-w-full pt-28   px-2 pb-10' >
+                <div className='container  flex flex-wrap justify-center min-w-full pt-28 px-2 pb-10' >
                     {context.items.map(item=><MovieItem  key={item.id} item={item}/>)
                      }
                 </div>
