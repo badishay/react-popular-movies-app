@@ -2,7 +2,7 @@ import './App.css';
 import {Switch, Route, useHistory} from 'react-router-dom'
 import React, {useState,useEffect} from 'react'
 import Navbar from './components/Navbar'
-import MovieList from './components/MovieList'
+import PopularMovies from './components/PopularMovies'
 import MovieDetails from './components/MovieDetails'
 import MyContext from './components/myContext'
 import axios from 'axios'
@@ -24,7 +24,7 @@ function App() {
         setHeader('search results');
     }
     else{
-      if(page===1){//if the page restart to one because we return fron search
+      if(page===1){//if the page restart to 1 because we return fron search
         setItems([...popular.data.results])
       }
       else{
@@ -41,15 +41,15 @@ function App() {
     window.addEventListener('scroll',(e) => {
         const bottom = e.target.documentElement.scrollHeight - e.target.documentElement.scrollTop === e.target.documentElement.clientHeight;
         console.log(e.target.documentElement.scrollHeight);
-        console.log(e.target.documentElement.scrollTop);
-       
         if (bottom){
+          console.log(bottom);
           setPage(prev=>prev+1);
         }
       })
 }, []) 
   
   return (
+    
       <MyContext.Provider value={{text:searchText, 
         callback:(text)=>setSearchText(text), restart:()=>{
            setPage(1)
@@ -58,8 +58,8 @@ function App() {
           
          },items: items, page:page, morePage:()=>setPage(prev=>prev+1)}}>
     <div>
-     <Navbar  restart={()=>{
-      //  setPage(1)
+     <Navbar   restart={()=>{
+        setPage(1)
        setSearchText('')
 
       }
@@ -75,7 +75,7 @@ function App() {
           </Route> */}
           
           <Route path='/'>
-            <MovieList text={searchText}/> 
+            <PopularMovies text={searchText}/> 
           </Route>
         
         </Switch>

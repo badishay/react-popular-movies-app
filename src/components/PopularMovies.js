@@ -4,10 +4,10 @@ import MyContext from './myContext'
 import Searchbar from './Searchbar'
 
 import axios from 'axios'
-// MovieList component
+// PopularMovies component
 // holds the base to show the popular movies 
 
-const MovieList = (props) => {
+const PopularMovies = (props) => {
    
   
     
@@ -16,12 +16,12 @@ const MovieList = (props) => {
         {
       context=>(
         
-            <div className='bg-galaxy min-h-screen' >
-                <div className='uppercase flex justify-between text-center tracking-widest bg-white bg-opacity-20 font-thin  text-2xl p-4' >
-                    <p className='text-red-50'>{context.text?'search results': 'popular movies'}</p>
+            <div className='bg-galaxy min-h-screen ' >
+                <div className='uppercase fixed mt-16  z-10 w-full  flex justify-between text-center tracking-widest bg-black bg-opacity-80 font-thin  text-xl p-3' >
+                    <p className='text-red-50 '>{context.text?'search results': 'popular movies'}</p>
             {context.text?null:<Searchbar />}
-            </div>
-                <div className='container flex flex-wrap justify-center min-w-full m-0  px-2 pb-10' >
+            </div >
+                <div className='container   flex flex-wrap justify-center min-w-full pt-28   px-2 pb-10' >
                     {context.items.map(item=><MovieItem  key={item.id} item={item}/>)
                      }
                 </div>
@@ -38,6 +38,6 @@ const MovieList = (props) => {
     )
 }
 
-export default MovieList
+export default PopularMovies
 
 
