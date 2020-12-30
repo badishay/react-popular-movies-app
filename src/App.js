@@ -17,7 +17,6 @@ function App() {
   useEffect(async() => {
       const apiKey='fd2a4c25ac9eda692e330c4d102133e2'
       const popular= await axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=${page}`);
-     
       if(searchText){
         setPage(1);
         const find= await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${searchText.replace(' ','+')}&language=en-US`);
@@ -25,13 +24,27 @@ function App() {
         setHeader('search results');
     }
     else{
-      setItems(oldItems => [...popular.data.results])
+      if(page===1){//if the page restart to one because we return fron search
+        setItems([...popular.data.results])
+      }
+      else{
+        setItems(oldItems => [...oldItems,...popular.data.results])
+      }
       setHeader('popular movies');
 
     }
           }, [searchText,page])
   
 
+
+  useEffect(() => {
+    window.addEventListener('scroll',(e) => {
+        const bottom = e.target.documentElement.scrollHeight - e.target.documentElement.scrollTop === e.target.documentElement.clientHeight;
+        if (bottom){
+          setPage(prev=>prev+1);
+        }
+      })
+}, []) 
   // useEffect(async() => {
   //   if(searchText){
   //   const apiKey='fd2a4c25ac9eda692e330c4d102133e2'
@@ -46,13 +59,16 @@ function App() {
   return (
       <MyContext.Provider value={{text:searchText, 
         callback:(text)=>setSearchText(text), restart:()=>{
-          setPage(1)
+          // setPage(1)
           setSearchText('')
+          
+          
          },items: items, page:page, morePage:()=>setPage(prev=>prev+1)}}>
     <div>
      <Navbar  restart={()=>{
-       setPage(1)
+      //  setPage(1)
        setSearchText('')
+
       }
        } />
         {/* <input type='button' value='home' className='w-screen h-1/2' onClick={()=>history.push('/')}></input> */}

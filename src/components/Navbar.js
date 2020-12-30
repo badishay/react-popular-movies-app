@@ -15,7 +15,7 @@ const Navbar = (props) => {
                 context.restart()
                 history.push('/')
             }
-                }><p className='text-red-900 border-solid border-4 border-red-900 hover:text-red-600 hover:border-red-600  border-l-0  text-center py-1 bg-red-50 rounded-r-full  my-5 w-72 italic font-bold text-2xl font-serif cursor-pointer'>my movies app</p>
+                }><p className='text-red-900 border-solid border-4 border-red-900 hover:text-red-600 hover:border-red-600  border-l-0  text-center py-1 bg-red-50 rounded-r-full  my-5 w-64 italic font-bold text-xl font-sans tracking-wide  cursor-pointer'>my movies app</p>
                 </div>
            
             
