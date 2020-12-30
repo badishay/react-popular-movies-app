@@ -53,9 +53,9 @@ function MovieDetails() {
                     </div>)
                     :null}
                       
-                <div className='mt-10 bg-gradient-to-r from-gray-200 via-gray-300 h-3/4 to-transperent hover:from-gray-100 hover:via-gray-200 bg-opacity-10 hover:bg-opacity-40  p-7 w-2/5 '>
+                <div className='mt-10 bg-gradient-to-r from-gray-200 via-gray-300 h-3/4 to-transperent hover:from-gray-100 hover:via-gray-200 bg-opacity-10 hover:bg-opacity-40  p-7 w-2/3 '>
                     <p className='text-4xl text-gray-900 font-extrabold font-sans mb-2 '> {movie.title} <p className='font-semibold text-2xl'>{year}</p></p>
-                    <div class="flex flex-warp divide-x-2 divide-black ml-0  divide-opacity-40  mb-10 ">
+                    <div class="flex flex-warp divide-x-2 divide-black  w-3/4 -ml-3  divide-opacity-40  mb-10 ">
                         {genres.map(genre=><div className=' px-3 font-bold'>{genre.name}</div>)}
                     </div>
                     {trailerKey?
