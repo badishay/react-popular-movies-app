@@ -40,26 +40,19 @@ function App() {
   useEffect(() => {
     window.addEventListener('scroll',(e) => {
         const bottom = e.target.documentElement.scrollHeight - e.target.documentElement.scrollTop === e.target.documentElement.clientHeight;
+        console.log(e.target.documentElement.scrollHeight);
+        console.log(e.target.documentElement.scrollTop);
+       
         if (bottom){
           setPage(prev=>prev+1);
         }
       })
 }, []) 
-  // useEffect(async() => {
-  //   if(searchText){
-  //   const apiKey='fd2a4c25ac9eda692e330c4d102133e2'
-  //   const find=`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${searchText.replace(' ','+')}&language=en-US`
-  //   const res=await axios.get(find);
-  //   setSearchList(res.data.results);
-  //   // res.data.results.map(x=>console.log(x.id,x.title));
-  //   }
-  //   }, [searchText])
-
-  // let history=useHistory()
+  
   return (
       <MyContext.Provider value={{text:searchText, 
         callback:(text)=>setSearchText(text), restart:()=>{
-          // setPage(1)
+           setPage(1)
           setSearchText('')
           
           
@@ -71,7 +64,6 @@ function App() {
 
       }
        } />
-        {/* <input type='button' value='home' className='w-screen h-1/2' onClick={()=>history.push('/')}></input> */}
 
      <Switch  style={{width:'100%', height:'100%'}} >
           <Route  path='/movies/:id' >
