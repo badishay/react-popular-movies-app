@@ -32,7 +32,7 @@ function MovieDetails() {
         console.log(trailerKey);
     }, [])
 
-    const trailer= (<iframe className=' rounded-3xl'   src={`https://www.youtube.com/embed/${trailerKey}`} frameborder="0" width='600' height='450' allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>)
+    const trailer= (<iframe className='rounded-tl-3xl'  src={`https://www.youtube.com/embed/${trailerKey}`} frameborder="0" width='100%' height='100%' allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>)
         
 
     return (
@@ -46,12 +46,13 @@ function MovieDetails() {
               <div className=' text-gray-900 flex flex-warp '  >
                 <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} className=' w-1/5 h-full m-10 mt-10 shadow-2xl '   alt='movie'/>
       {showTrailer? 
-                (<div className='m-10 relative focus:outline-none'>
+                (<div className='m-10 absolute inset-0 z-30 focus:outline-none'>
                     <input type='button' className=' border-4 cursor-pointer bg-black bg-opacity-70 focus:outline-none absolute text-red-500 border-red-500 font-bold hover:text-red-400 hover:border-red-400  text-xl rounded-full px-3 pb-1 p-1 text-center pt-0 ' value='x' onClick={()=>setShowTrailer(false)}/>
                     {trailer}
                     </div>)
+                    :null}
                       
-                :<div className='mt-10 bg-gradient-to-r from-gray-200 via-gray-300 h-3/4 to-transperent hover:from-gray-100 hover:via-gray-200 bg-opacity-10 hover:bg-opacity-40  p-7 w-2/5 '>
+                <div className='mt-10 bg-gradient-to-r from-gray-200 via-gray-300 h-3/4 to-transperent hover:from-gray-100 hover:via-gray-200 bg-opacity-10 hover:bg-opacity-40  p-7 w-2/5 '>
                     <p className='text-4xl text-gray-900 font-extrabold font-sans mb-2 '> {movie.title} <p className='font-semibold text-2xl'>{year}</p></p>
                     <div class="flex flex-warp divide-x-2 divide-black ml-0  divide-opacity-40  mb-10 ">
                         {genres.map(genre=><div className=' px-3 font-bold'>{genre.name}</div>)}
@@ -60,7 +61,7 @@ function MovieDetails() {
                      <input type='button' value='trailer >' className='px-2 mb-5 rounded-full font-bold text-yellow-50 bg-red-700 pb-1 cursor-pointer hover:bg-red-600 text-center focus:outline-none' onClick={()=>setShowTrailer(true)}/>
                      :null}
                     {movie.overview?<p className='h-auto tracking-wide font-semibold text-sm'><header className='font-bold mb-2 text-2xl'>overview</header> {movie.overview}</p>:null}
-                </div>}
+                </div>
                 
             </div >
             <div className='bg-gray-900 bg-opacity-50 mt-4'>
