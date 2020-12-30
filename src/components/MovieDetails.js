@@ -46,7 +46,7 @@ function MovieDetails() {
               <div className=' text-gray-900 flex flex-warp '  >
                 <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} className=' w-1/5 h-full m-10 mt-10 shadow-2xl '   alt='movie'/>
       {showTrailer? 
-                (<div className='m-10 absolute inset-0 z-30 focus:outline-none'>
+                (<div className='m-10 fixed mt-20 inset-0 z-10 focus:outline-none'>
                     <input type='button' className=' border-4 cursor-pointer bg-black bg-opacity-70 focus:outline-none absolute text-red-500 border-red-500 font-bold hover:text-red-400 hover:border-red-400  text-xl rounded-full px-3 pb-1 p-1 text-center pt-0 ' value='x' onClick={()=>setShowTrailer(false)}/>
                     {trailer}
                     </div>)

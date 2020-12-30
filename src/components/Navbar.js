@@ -9,7 +9,7 @@ const Navbar = (props) => {
         <MyContext.Consumer>
         {
       context=>(
-        <div className=' py-3  bg-black  w-full z-10 fixed '>
+        <div className=' py-3  bg-black  w-full z-20 fixed '>
             <div onClick={
                 ()=>{
                 context.restart()
