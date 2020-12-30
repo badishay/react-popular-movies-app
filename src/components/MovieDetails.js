@@ -72,7 +72,7 @@ function MovieDetails() {
                    <div className='flex'>{cast.map(actor=> actor.profile_path?
                   ( <span className='flex-none w-1/12 mx-3 mt-2 mb-5 opacity-70 text-transparent hover:text-gray-200 text-sm'>
                         <img src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`}  className=' opacity-70  hover:opacity-95  rounded shadow-2xl'   alt='actor'/>
-                         <p className='ml-3'>{actor.name}</p>
+                         <p className='ml-3 text-xs'>{actor.name}</p>
                     </span>)
                         :null)}</div>
             </div>
