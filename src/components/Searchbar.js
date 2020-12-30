@@ -7,7 +7,7 @@ function Searchbar(props) {
         <MyContext.Consumer>
               {
             context=>(
-        <div className='  bg-white h-10 rounded-l-full pb-2 '>
+        <div className='  bg-white h-10 rounded-l-full pb-2 w-1/4 inset-y-0 right-0 absolute'>
             {inputFiled?<input type='button' value='X'  className=' border-gray-400 border-2 text-sm border-rounded ml-3 cursor-pointer focus:outline-none  px-1  font-bold bg-opacity-50 text-gray-400  bg-white rounded-full opacity-70' 
             onClick={()=>{
                 context.restart();
