@@ -15,7 +15,7 @@ function Searchbar(props) {
                 setInputFiled('')
             }
                 }/>: null}
-            <input type="text" className='bg-transperent w-full  bg-transparent ml-6 pl-4 pt-1  text-xl font-semibold   focus:outline-none focus:placeholder-gray-300 placeholder-gray-400 ' placeholder='search for movies' value={inputFiled} onChange={e=>setInputFiled(e.target.value)} onKeyDown={e=>e.key==='Enter'?context.callback(inputFiled):null}/>
+            <input type="text" className='bg-transperent w-full bg-transparent ml-6 pl-4 pt-1 mr-2  text-xl font-semibold   focus:outline-none focus:placeholder-gray-300 placeholder-gray-400  ' placeholder='search for movies' value={inputFiled} onChange={e=>setInputFiled(e.target.value)} onKeyDown={e=>e.key==='Enter'?context.callback(inputFiled):null}/>
         </div>
         </div>
          )

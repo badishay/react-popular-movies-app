@@ -21,7 +21,7 @@ const PopularMovies = (props) => {
             {context.text?null:<Searchbar />}
                     <p className='text-red-500 '>{context.text?'search results': 'popular movies'}</p>
             </div >
-                <div className='container  flex flex-wrap justify-center min-w-full pt-28 px-2 pb-8' >
+                <div className='container  flex flex-wrap justify-center min-w-full pt-32 px-2 pb-8' >
                     {context.items.map(item=><MovieItem  key={item.id} item={item}/>)
                      }
                 </div>
