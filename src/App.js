@@ -5,15 +5,16 @@ import Navbar from './components/Navbar'
 import PopularMovies from './components/PopularMovies'
 import MovieDetails from './components/MovieDetails'
 import MyContext from './components/myContext'
+
 import axios from 'axios'
 function App() {
   const [searchText,setSearchText] = useState('');
-
   const [items,setItems] =useState([]);
   const [page,setPage] = useState(1);
   const [header,setHeader] = useState('popular movies');
  
-
+  let history=useHistory()
+  
   useEffect(async() => {
       const apiKey='fd2a4c25ac9eda692e330c4d102133e2'
       const popular= await axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=${page}`);
@@ -21,7 +22,13 @@ function App() {
         setPage(1);
         const find= await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${searchText.replace(' ','+')}&language=en-US`);
         setItems([...find.data.results]);
-        setHeader('search results');
+        console.log(find.data.results);
+        if(find.data.results.length){
+          setHeader('search results');
+        }
+        else{
+          setHeader('no results :(');
+        }
     }
     else{
       if(page===1){//if the page restart to 1 because we return fron search
@@ -50,20 +57,21 @@ function App() {
   
   return (
     
-      <MyContext.Provider value={{text:searchText, 
-        callback:(text)=>setSearchText(text), restart:()=>{
+      <MyContext.Provider value={{
+        text:searchText, 
+        callback:(text)=>{
+          history.push('./')
+          setSearchText(text)},
+        restart:()=>{
            setPage(1)
-          setSearchText('')
-          
-          
-         },items: items, page:page, morePage:()=>setPage(prev=>prev+1)}}>
+          setSearchText('');
+          },
+        items: items,
+        header:header,
+        page:page,
+        morePage:()=>setPage(prev=>prev+1)}}>
     <div>
-     <Navbar   restart={()=>{
-        setPage(1)
-       setSearchText('')
-
-      }
-       } />
+     <Navbar />
 
      <Switch  style={{width:'100%', height:'100%'}} >
           <Route  path='/movies/:id' >

@@ -16,8 +16,9 @@ const PopularMovies = (props) => {
       context=>(
         
             <div className='bg-galaxy min-h-screen ' >
+                
                 <div className='uppercase fixed mt-14 cursor-default z-10 w-full text-center tracking-widest bg-black bg-opacity-80 font-thin  text-xl  pb-3' >
-                    <p className='text-red-500 '>{context.text?'search results': 'popular movies'}</p>
+                    <p className='text-red-500 '>{context.header}</p>
             </div >
                 <div className='  flex flex-wrap justify-center  pt-20 px-2' >
                     {context.items.map(item=><MovieItem  key={item.id} item={item}/>)

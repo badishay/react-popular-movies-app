@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react'
 import {useParams} from 'react-router-dom'
 import axios from 'axios'
+import MyContext from './myContext'
+
 function MovieDetails() {
     const [movie,setMovie]= useState({});
     const [cast,setCast]= useState([]);
@@ -36,6 +38,9 @@ function MovieDetails() {
         
 
     return (
+        <MyContext.Consumer>
+        {
+      context=>(
 <div className='' style={{backgroundImage:`url(https://image.tmdb.org/t/p/w500/${movie.backdrop_path})`, backgroundPosition: 'center',
   backgroundSize: 'cover',
   backgroundRepeat: 'no-repeat',
@@ -80,6 +85,10 @@ function MovieDetails() {
                    </div>
             {/* </Image> */}
                 </div>
+                 )
+                }
+        
+          </MyContext.Consumer>
           
     )
 }

@@ -19,7 +19,8 @@ const MovieItem = (props) => {
         }} onMouseEnter={()=>setTitle(true)} onMouseLeave={()=>setTitle(false)} 
         onClick={()=>{
           history.push(`/movies/${props.item.id}`);
-          context.callback(' ');
+          // context.callback('');
+          //  context.restart()
           }}>
        
             {title?<div className='absolute inset-x-0 bottom-0 text-left h-1/5 bg-black bg-opacity-80 border-b rounded-b-lg border-gray-300 '>
