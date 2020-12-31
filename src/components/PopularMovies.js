@@ -1,7 +1,6 @@
 import React, {useState,useEffect} from 'react'
 import MovieItem from './MovieItem'
 import MyContext from './myContext'
-import Searchbar from './Searchbar'
 
 import axios from 'axios'
 // PopularMovies component
@@ -17,11 +16,10 @@ const PopularMovies = (props) => {
       context=>(
         
             <div className='bg-galaxy min-h-screen ' >
-                <div className='uppercase fixed mt-16 cursor-default  z-10 w-full  text-center tracking-widest bg-black bg-opacity-80 font-thin  text-xl  pb-3' >
-            {context.text?null:<Searchbar />}
+                <div className='uppercase fixed mt-14 cursor-default z-10 w-full text-center tracking-widest bg-black bg-opacity-80 font-thin  text-xl  pb-3' >
                     <p className='text-red-500 '>{context.text?'search results': 'popular movies'}</p>
             </div >
-                <div className='  flex flex-wrap justify-center  pt-32 px-2 ' >
+                <div className='  flex flex-wrap justify-center  pt-20 px-2' >
                     {context.items.map(item=><MovieItem  key={item.id} item={item}/>)
                      }
                 </div>

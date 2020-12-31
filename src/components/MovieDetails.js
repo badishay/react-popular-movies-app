@@ -41,7 +41,7 @@ function MovieDetails() {
   backgroundRepeat: 'no-repeat',
   
   }}>
-      <div className='bg-gray-500 bg-opacity-70 pt-16 cursor-default '>
+      <div className='bg-gray-500 bg-opacity-70 pt-10 cursor-default '>
           {/* <Image src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`} className=' opacity-50 p-0  '  alt='movie'> */}
               <div className=' text-gray-900 flex flex-warp '  >
                 <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} className=' w-1/5 h-full my-10 mx-3 shadow-2xl '   alt='movie'/>
