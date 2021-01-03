@@ -25,7 +25,7 @@ function ActorDetails() {
     return (
         <div className=' bg-galaxy container'>
             <div className='  flex flex-wrap justify-center pb-8 bg-white shadow-inner bg-opacity-80 pt-24 mx-10'>
-                <div className='w-72 mx-10 '>
+                <div className=' mx-10 w-64 '>
                     <img src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`} />
                     <h1 className='font-bold text-3xl mt-3 mb-5'>{actor.name}</h1>
                 </div>
