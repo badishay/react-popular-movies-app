@@ -35,8 +35,7 @@ function ActorDetails() {
                 </div>:null}
            </div>
            <div className='  flex flex-wrap justify-center px-2 pt-10 ' >
-                    {credits.map((item,index)=><MovieItem  key={item.id} item={item} />)
-                     }
+                    {credits.map((item)=><MovieItem  key={item.id} item={item} />)}
                 </div>
         </div>
     )

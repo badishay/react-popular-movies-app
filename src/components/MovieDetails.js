@@ -13,13 +13,14 @@ function MovieDetails() {
     const {id}= useParams();
     let history=useHistory();
 
-    const apiKey='fd2a4c25ac9eda692e330c4d102133e2'
+    const apiKey='fd2a4c25ac9eda692e330c4d102133e2';
     //movie details
     useEffect(async() => {
         const res = await axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}&language=en-US`)
         setMovie(res.data);
         setYear(res.data.release_date.slice(0,4));
-        setGenres(res.data.genres)
+        await setGenres(res.data.genres);
+        console.log(genres);
 
     }, [])
 
@@ -64,8 +65,12 @@ function MovieDetails() {
                       
                 <div className='mt-10 bg-gradient-to-r from-gray-200 via-gray-300 h-3/4 to-transperent hover:from-gray-100 hover:via-gray-200 bg-opacity-10 hover:bg-opacity-40  p-7 w-96 '>
                     <p className='text-4xl text-gray-900 font-extrabold font-sans mb-2 '> {movie.title} <p className='font-semibold text-2xl'>{year}</p></p>
-                    <div class="flex flex-warp divide-x-2 divide-black  w-1/2 -ml-3 mr-5  divide-opacity-40  mb-10 ">
-                        {genres.map(genre=><p className='break-words px-3 font-bold '>{genre.name}</p>)}
+                    <div class="flex flex-warp divide-x-2 divide-black  w-1/2 -ml-3 mr-5  divide-opacity-40 mb-10 ">
+                        {genres.map(genre=><p className='break-words px-3 font-bold ' 
+                        onClick={()=>history.push(`/genre/${genre.id}/${genre.name}`)}
+                        >
+                            {genre.name}
+                            </p>)}
                     </div>
                     {trailerKey?
                      <input type='button' value='trailer >' className='px-2 mb-5 rounded-full font-bold text-yellow-50 bg-red-700 pb-1 cursor-pointer hover:bg-red-600 text-center focus:outline-none' onClick={()=>setShowTrailer(true)}/>

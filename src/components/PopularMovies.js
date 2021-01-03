@@ -2,7 +2,6 @@ import React, {useState,useEffect} from 'react'
 import MovieItem from './MovieItem'
 import MyContext from './myContext'
 
-import axios from 'axios'
 // PopularMovies component
 // holds the base to show the popular movies 
 

@@ -6,6 +6,7 @@ import PopularMovies from './components/PopularMovies'
 import MovieDetails from './components/MovieDetails'
 import MyContext from './components/myContext'
 import ActorDetails from'./components/ActorDetails'
+import Genre from './components/Genre'
 
 import axios from 'axios'
 function App() {
@@ -81,6 +82,10 @@ function App() {
 
           <Route  path='/actors/:id' >
               <ActorDetails/>
+          </Route>
+
+          <Route  path='/genre/:id/:name' >
+              <Genre/>
           </Route>
 
           <Route path='/'>
