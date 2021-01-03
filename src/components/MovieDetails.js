@@ -74,10 +74,8 @@ function MovieDetails() {
                 </div>
                 
             </div >
-            <div className='bg-gray-900 bg-opacity-50 mt-4'>
+           {cast.length? <div className='bg-gray-900 bg-opacity-50 mt-4'>
                 <p className=' bg-black bg-opacity-40 p-2 px-5 text-gray-400 font text-3xl  italic font-bold'>cast</p>
-                {/* <div className='font-mono font-bold italic text-white shadow-2xl text-3xl'>Actors</div> */}
-
                    <div className='flex' >
                        {cast.map(actor=> actor.profile_path?
                   ( <span className='flex-none w-1/12 mx-3 mt-2 mb-5 opacity-80 text-transparent hover:text-gray-200 text-sm'
@@ -86,7 +84,7 @@ function MovieDetails() {
                          <p className='ml-3 text-xs'>{actor.name}</p>
                     </span>)
                         :null)}</div>
-            </div>
+            </div>:null}
             
                    </div>
             {/* </Image> */}
