@@ -49,9 +49,7 @@ function App() {
   useEffect(() => {
     window.addEventListener('scroll',(e) => {
         const bottom = e.target.documentElement.scrollHeight - e.target.documentElement.scrollTop === e.target.documentElement.clientHeight;
-        console.log(e.target.documentElement.scrollHeight);
         if (bottom){
-          console.log(bottom);
           setPage(prev=>prev+1);
         }
       })
