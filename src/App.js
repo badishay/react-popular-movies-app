@@ -5,6 +5,7 @@ import Navbar from './components/Navbar'
 import PopularMovies from './components/PopularMovies'
 import MovieDetails from './components/MovieDetails'
 import MyContext from './components/myContext'
+import ActorDetails from'./components/ActorDetails'
 
 import axios from 'axios'
 function App() {
@@ -60,7 +61,7 @@ function App() {
       <MyContext.Provider value={{
         text:searchText, 
         callback:(text)=>{
-          history.push('./')
+          history.push('/')
           setSearchText(text)},
         restart:()=>{
            setPage(1)
@@ -78,10 +79,10 @@ function App() {
               <MovieDetails/>
           </Route>
 
-          {/* <Route  path='/movies/search' >
-              <SearchResults/>
-          </Route> */}
-          
+          <Route  path='/actors/:id' >
+              <ActorDetails/>
+          </Route>
+
           <Route path='/'>
             <PopularMovies text={searchText}/> 
           </Route>

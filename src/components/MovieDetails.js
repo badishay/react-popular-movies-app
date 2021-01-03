@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import {useParams} from 'react-router-dom'
+import {useParams, useHistory} from 'react-router-dom'
 import axios from 'axios'
 import MyContext from './myContext'
 
@@ -10,9 +10,11 @@ function MovieDetails() {
     const [year,setYear]= useState('');
     const [trailerKey,setTrailerKey]= useState('');
     const [showTrailer,setShowTrailer]= useState(false);
-    const {id}= useParams()
+    const {id}= useParams();
+    let history=useHistory();
+
     const apiKey='fd2a4c25ac9eda692e330c4d102133e2'
-    
+    //movie details
     useEffect(async() => {
         const res = await axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}&language=en-US`)
         setMovie(res.data);
@@ -21,17 +23,19 @@ function MovieDetails() {
 
     }, [])
 
+    //movie cast
     useEffect(async() => {
         const res = await axios.get(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${apiKey}&language=en-US`);
         setCast(res.data.cast.slice(0,5))
     }, [])
 
+    //movie trailer
     useEffect(async() => {
         const res = await axios.get(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=${apiKey}&language=en-US`);
         if(res.data.results[0]){
             setTrailerKey(res.data.results[0].key)
         }
-        console.log(trailerKey);
+        // console.log(trailerKey);
     }, [])
 
     const trailer= (<iframe className='rounded-tl-3xl resize'  src={`https://www.youtube.com/embed/${trailerKey}`} frameborder="0" width='100%' height='100%' allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>)
@@ -74,8 +78,10 @@ function MovieDetails() {
                 <p className=' bg-black bg-opacity-40 p-2 px-5 text-gray-400 font text-3xl  italic font-bold'>cast</p>
                 {/* <div className='font-mono font-bold italic text-white shadow-2xl text-3xl'>Actors</div> */}
 
-                   <div className='flex'>{cast.map(actor=> actor.profile_path?
-                  ( <span className='flex-none w-1/12 mx-3 mt-2 mb-5 opacity-80 text-transparent hover:text-gray-200 text-sm'>
+                   <div className='flex' >
+                       {cast.map(actor=> actor.profile_path?
+                  ( <span className='flex-none w-1/12 mx-3 mt-2 mb-5 opacity-80 text-transparent hover:text-gray-200 text-sm'
+                       onClick={()=>history.push(`/actors/${actor.id}`)}>
                         <img src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`}  className=' opacity-70  hover:opacity-100  rounded shadow-2xl'   alt='actor'/>
                          <p className='ml-3 text-xs'>{actor.name}</p>
                     </span>)

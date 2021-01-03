@@ -21,7 +21,7 @@ const PopularMovies = (props) => {
                     <p className='text-red-500 '>{context.header}</p>
             </div >
                 <div className='  flex flex-wrap justify-center  pt-20 px-2' >
-                    {context.items.map(item=><MovieItem  key={item.id} item={item}/>)
+                    {context.items.map((item,index)=><MovieItem  key={item.id} item={item} id={index} />)
                      }
                 </div>
                 {/* <div className='flex justify-center'>  
