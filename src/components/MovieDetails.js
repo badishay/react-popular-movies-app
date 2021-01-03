@@ -74,11 +74,11 @@ function MovieDetails() {
                 </div>
                 
             </div >
-           {cast.length? <div className='bg-gray-900 bg-opacity-50 mt-4'>
+           {cast.length? <div className='bg-black bg-opacity-70 mt-4'>
                 <p className=' bg-black bg-opacity-40 p-2 px-5 text-gray-400 font text-3xl  italic font-bold'>cast</p>
-                   <div className='flex' >
+                   <div className='flex flex-warp' >
                        {cast.map(actor=> actor.profile_path?
-                  ( <span className='flex-none w-1/12 mx-3 mt-2 mb-5 opacity-80 text-transparent hover:text-gray-200 text-sm'
+                  ( <span className=' mx-2 w-40 mt-2 mb-5 opacity-80 text-transparent hover:text-gray-200 text-sm'
                        onClick={()=>history.push(`/actors/${actor.id}`)}>
                         <img src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`}  className=' opacity-70  hover:opacity-100  rounded shadow-2xl'   alt='actor'/>
                          <p className='ml-3 text-xs'>{actor.name}</p>

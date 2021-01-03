@@ -23,10 +23,10 @@ function ActorDetails() {
 
     return (
         <div className=' bg-galaxy'>
-            <div className='  flex flex-wrap justify-center pb-8 bg-gray-300 pt-24  mx-12'>
+            <div className='  flex flex-wrap justify-center pb-8 bg-yellow-50 bg-opacity-70 pt-24 mx-12'>
                 <div className='w-1/5 mr-10'>
                     <img src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`} />
-                    <h1 className='font-bold text-3xl my-2'>{actor.name}</h1>
+                    <h1 className='font-bold text-2xl my-2'>{actor.name}</h1>
                 </div>
                 {actor.biography?<div className='w-1/2'>
                     <h1 className='font-bold text-lg'>biography</h1>
