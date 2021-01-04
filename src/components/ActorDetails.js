@@ -11,11 +11,13 @@ function ActorDetails() {
     const apiKey='fd2a4c25ac9eda692e330c4d102133e2'
     const date =new Date();
     console.log(date.toLocaleDateString());
+
     useEffect(async() => {
         const res = await axios.get(`https://api.themoviedb.org/3/person/${id}?api_key=${apiKey}&language=en-US`)
         console.log(res.data);
         setActor(res.data);
     }, [])
+    
     useEffect(async() => {
         const res = await axios.get(`https://api.themoviedb.org/3/person/${id}/movie_credits?api_key=${apiKey}&language=en-US`)
         console.log(res.data);
@@ -34,7 +36,7 @@ function ActorDetails() {
                     <div className='' >{actor.biography}</div>
                 </div>:null}
            </div>
-           <div className='uppercase cursor-default sticky top-14 z-10  w-full text-center tracking-widest bg-gray-900 bg-opacity-80 font-thin  text-xl   p-3' >
+           <div className='uppercase cursor-default sticky top-14 z-10  w-full text-center tracking-widest bg-gray-900 bg-opacity-80 font-thin  text-xl   p-2' >
                     <p className='text-gray-400'>movies <label className='text-red-500'>{actor.name}</label> played in</p>
             </div >
            <div className='  flex flex-wrap justify-center  ' >
