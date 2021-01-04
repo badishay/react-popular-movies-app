@@ -48,7 +48,7 @@ function App() {
 
   useEffect(() => {
     window.addEventListener('scroll',(e) => {
-        const bottom = e.target.documentElement.scrollHeight - e.target.documentElement.scrollTop === e.target.documentElement.clientHeight;
+      const bottom = Math.round(e.target.documentElement.scrollHeight - e.target.documentElement.scrollTop) === e.target.documentElement.clientHeight;
         if (bottom){
           setPage(prev=>prev+1);
         }
