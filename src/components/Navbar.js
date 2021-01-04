@@ -16,7 +16,7 @@ const Navbar = (props) => {
                 context.restart()
                 history.push('/')
             }
-                }><p className=' text-red-900   to-red-200 border-solid  border-2 border-red-900 hover:text-red-600 hover:border-red-600  border-l-0  text-left  p-1 bg-red-50 rounded-r-full w-24 italic font-bold text-sm font-sans  cursor-pointer'>home page</p>
+                }><p className=' text-red-900   to-red-200 border-solid  border-2 border-red-900 hover:text-red-600 hover:border-red-600  border-l-0  text-left  p-1 bg-red-100 rounded-r-full w-24 italic font-extrabold text-sm font-sans  cursor-pointer'>home page</p>
                 </div>
                 {<Searchbar/>}
            

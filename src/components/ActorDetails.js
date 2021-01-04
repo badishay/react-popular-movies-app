@@ -25,7 +25,7 @@ function ActorDetails() {
     return (
         <div className=' bg-galaxy container'>
             <div className='  flex flex-wrap justify-center pb-8 bg-white shadow-inner bg-opacity-80 pt-24 mx-10'>
-                <div className=' mx-10 w-64 '>
+                <div className=' mx-10 w-60 '>
                     <img src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`} />
                     <h1 className='font-bold text-3xl mt-3 mb-5'>{actor.name}</h1>
                 </div>
@@ -34,10 +34,10 @@ function ActorDetails() {
                     <div className='' >{actor.biography}</div>
                 </div>:null}
            </div>
-           <div className='uppercase cursor-default   w-full text-center tracking-widest bg-gray-900 bg-opacity-80 font-thin  text-xl   p-3' >
-                    <p className='text-red-500 '>{`${actor.name}'s movies`}</p>
+           <div className='uppercase cursor-default sticky top-14 z-10  w-full text-center tracking-widest bg-gray-900 bg-opacity-80 font-thin  text-xl   p-3' >
+                    <p className='text-gray-400'>movies <label className='text-red-500'>{actor.name}</label> played in</p>
             </div >
-           <div className='  flex flex-wrap justify-center px-2  ' >
+           <div className='  flex flex-wrap justify-center  ' >
                     {credits.map((item)=><MovieItem  key={item.id} item={item} />)}
                 </div>
         </div>
