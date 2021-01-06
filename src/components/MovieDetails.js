@@ -63,7 +63,7 @@ function MovieDetails() {
                       
                 <div className=' bg-gradient-to-r from-gray-200 via-gray-300 h-3/4 to-transperent hover:from-gray-100 hover:via-gray-200 bg-opacity-10 hover:bg-opacity-40  pb-7 pt-3 px-5   '>
                     <p className='text-4xl text-gray-900 font-bold font-sans mb-2 '> {movie.title} <p className='font-semibold text-2xl'>{year}</p></p>
-                    <div class="flex flex-warp divide-x-2 divide-black   -ml-3   divide-opacity-40 mb-10 ">
+                    <div class="flex flex-warp divide-x-2 divide-black -ml-3 divide-opacity-40 mb-10 ">
                         {genres.map(genre=><p className='break-words px-3 font-bold cursor-pointer hover:text-yellow-600 ' 
                         onClick={()=>history.push(`/genre/${genre.id}/${genre.name}`)}>
                             {genre.name}
@@ -80,7 +80,7 @@ function MovieDetails() {
                 <p className=' bg-black bg-opacity-40 p-2 px-5 text-gray-400 font text-3xl  italic font-bold'>cast</p>
                    <div className='flex flex-warp' >
                        {cast.map(actor=> actor.profile_path?
-                  ( <span className=' mx-2 w-40 mt-2 mb-5 opacity-80 text-transparent cursor-pointer hover:text-gray-200 text-sm'
+                  ( <span className=' mx-2 w-40 mt-2 mb-4 opacity-80 text-transparent cursor-pointer hover:text-gray-200 text-sm'
                        onClick={()=>history.push(`/actors/${actor.id}`)}>
                         <img src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`}  className=' opacity-70  hover:opacity-100  rounded shadow-2xl'   alt='actor'/>
                          <p className='ml-3 text-xs'>{actor.name}</p>
