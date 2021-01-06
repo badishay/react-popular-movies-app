@@ -1,47 +1,46 @@
 import './App.css';
 import {Switch, Route, useHistory} from 'react-router-dom'
-import React, {useState,useEffect} from 'react'
+import React, {useState,useEffect,Suspense} from 'react'
 import Navbar from './components/Navbar'
 import PopularMovies from './components/PopularMovies'
 import MovieDetails from './components/MovieDetails'
 import MyContext from './components/myContext'
 import ActorDetails from'./components/ActorDetails'
 import Genre from './components/Genre'
-
 import axios from 'axios'
+
+
 function App() {
   const [searchText,setSearchText] = useState('');
   const [items,setItems] =useState([]);
   const [page,setPage] = useState(1);
   const [header,setHeader] = useState('popular movies');
- 
-  let history=useHistory()
+  let history=useHistory();
   
   useEffect(async() => {
       const apiKey='fd2a4c25ac9eda692e330c4d102133e2'
       const popular= await axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=${page}`);
       if(searchText){
-        setPage(1);
-        const find= await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${searchText.replace(' ','+')}&language=en-US`);
-        setItems([...find.data.results]);
-        console.log(find.data.results);
-        if(find.data.results.length){
-          setHeader('search results');
+          setPage(1);
+          const find= await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${searchText.replace(' ','+')}&language=en-US`);
+          setItems([...find.data.results]);
+          console.log(find.data.results);
+          if(find.data.results.length){
+            setHeader('search results');
+          }
+          else{
+            setHeader('no results :(');
+          }
+       }
+      else{
+        if(page===1){//if the page restart to 1 because we return fron search
+          setItems([...popular.data.results])
         }
         else{
-          setHeader('no results :(');
+          setItems(oldItems => [...oldItems,...popular.data.results])
         }
-    }
-    else{
-      if(page===1){//if the page restart to 1 because we return fron search
-        setItems([...popular.data.results])
+        setHeader('popular movies');
       }
-      else{
-        setItems(oldItems => [...oldItems,...popular.data.results])
-      }
-      setHeader('popular movies');
-
-    }
           }, [searchText,page])
   
 
@@ -56,7 +55,6 @@ function App() {
 }, []) 
   
   return (
-    
       <MyContext.Provider value={{
         text:searchText, 
         callback:(text)=>{
@@ -72,8 +70,13 @@ function App() {
         morePage:()=>setPage(prev=>prev+1)}}>
     <div>
      <Navbar />
+     <Suspense fallback={<div>Loading...</div>}>
+     <Switch  style={{width:'100vw', height:'100%'}} >
 
-     <Switch  style={{width:'100%', height:'100%'}} >
+          <Route exact path='/'>
+            <PopularMovies text={searchText}/> 
+          </Route>
+
           <Route  path='/movies/:id' >
               <MovieDetails/>
           </Route>
@@ -86,11 +89,14 @@ function App() {
               <Genre/>
           </Route>
 
-          <Route path='/'>
-            <PopularMovies text={searchText}/> 
+          <Route path='*' >
+              <p className='text-4xl text-center text-red-900  pt-32 font-thin tracking-wide'>
+                page not found :(
+              </p>
           </Route>
-        
+
         </Switch>
+        </Suspense>
     </div>
     </MyContext.Provider>
 

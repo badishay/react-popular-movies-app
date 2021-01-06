@@ -10,17 +10,18 @@ const Navbar = (props) => {
         <MyContext.Consumer>
         {
       context=>(
-        <div className=' py-3  bg-black w-full z-20 fixed '>
+          <div className='w-screen z-20 fixed'>
+        <div className='  bg-black w-screen  focus:outline-none flex justify-between py-2'>
             <div onClick={
                 ()=>{
-                context.restart()
-                history.push('/')
-            }
-                }><p className=' text-red-900   to-red-200 border-solid  border-2 border-red-900 hover:text-red-600 hover:border-red-600  border-l-0  text-left  p-1 bg-red-100 rounded-r-full w-24 italic font-extrabold text-sm font-sans  cursor-pointer'>home page</p>
+                    context.restart()
+                    history.push('/')
+                }
+            }><p className=' text-red-900  to-red-200 border-solid  border-2 border-red-900 hover:text-red-600 hover:border-red-600  border-l-0  text-left  p-1 bg-red-100 rounded-r-full w-24 italic font-extrabold text-sm font-sans  cursor-pointer'>home page</p>
                 </div>
                 {<Searchbar/>}
-           
-            
+        </div>
+            {/* <p className=' bg-white w-32 h-screen '> categories</p> */}
         </div>
          )
         }

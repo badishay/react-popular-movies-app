@@ -36,7 +36,6 @@ function MovieDetails() {
         if(res.data.results[0]){
             setTrailerKey(res.data.results[0].key)
         }
-        // console.log(trailerKey);
     }, [])
 
     const trailer= (<iframe className='rounded-tl-3xl resize'  src={`https://www.youtube.com/embed/${trailerKey}`} frameborder="0" width='100%' height='500' allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>)
@@ -51,9 +50,9 @@ function MovieDetails() {
   backgroundRepeat: 'no-repeat',
   
   }}>
-      <div className='bg-gray-500 bg-opacity-70 pt-10 cursor-default '>
+      <div className='bg-gray-500 bg-opacity-70 pt-10  cursor-default '>
           {/* <Image src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`} className=' opacity-50 p-0  '  alt='movie'> */}
-              <div className=' text-gray-900 flex flex-wrap  '  >
+              <div className=' text-gray-900 flex flex-wrap '  >
                 <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} className='  mt-10  w-72 h-96 shadow-2xl mx-10 '   alt='movie'/>
       {showTrailer? (<div className='container bg-black bg-opacity-80 z-10 fixed '>
                 <div className=' inset-0 h-4/5 my-10  focus:outline-none'>

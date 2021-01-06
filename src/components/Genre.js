@@ -21,7 +21,6 @@ function Genre() {
     useEffect(() => {
        
         window.addEventListener('scroll',(e) => {
-            
             const bottom = Math.round(e.target.documentElement.scrollHeight - e.target.documentElement.scrollTop) === e.target.documentElement.clientHeight;
             // console.log(Math.round( e.target.documentElement.scrollHeight - e.target.documentElement.scrollTop),e.target.documentElement.clientHeight);
              console.log(bottom);
@@ -34,12 +33,15 @@ function Genre() {
     return (
         <div className='bg-galaxy'>
             <div className='uppercase fixed mt-14 cursor-default z-10 w-full text-center tracking-widest bg-black bg-opacity-80 font-thin  text-xl  pb-3' >
-                    <p className='text-red-500 '>{name}</p>
+                <p className='text-red-500 '>{name}</p>
             </div >
-        <div className='  flex flex-wrap pt-20'>
-           {movies.map((item)=><MovieItem  key={item.id} item={item} />)}
-
-        </div>
+   
+            <div className='  flex flex-wrap pt-20 justify-evenly'>
+                {movies.map((item)=><MovieItem  key={item.id} item={item} />)}
+            </div>
+            <div className='h-16 font-thin py-3 tracking-widest bg-white bg-opacity-50 text-center text-white text-2xl z-20'>
+               loading more...
+            </div>
         </div>
     )
 }
