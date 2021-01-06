@@ -20,7 +20,6 @@ function MovieDetails() {
         setMovie(res.data);
         setYear(res.data.release_date.slice(0,4));
         await setGenres(res.data.genres);
-        console.log(genres);
 
     }, [])
 

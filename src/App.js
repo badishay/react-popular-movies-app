@@ -3,6 +3,7 @@ import {Switch, Route, useHistory} from 'react-router-dom'
 import React, {useState,useEffect,Suspense} from 'react'
 import Navbar from './components/Navbar'
 import PopularMovies from './components/PopularMovies'
+import SearchResults from './components/SearchResults'
 import MovieDetails from './components/MovieDetails'
 import MyContext from './components/myContext'
 import ActorDetails from'./components/ActorDetails'
@@ -20,19 +21,7 @@ function App() {
   useEffect(async() => {
       const apiKey='fd2a4c25ac9eda692e330c4d102133e2'
       const popular= await axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=${page}`);
-      if(searchText){
-          setPage(1);
-          const find= await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${searchText.replace(' ','+')}&language=en-US`);
-          setItems([...find.data.results]);
-          console.log(find.data.results);
-          if(find.data.results.length){
-            setHeader('search results');
-          }
-          else{
-            setHeader('no results :(');
-          }
-       }
-      else{
+      
         if(page===1){//if the page restart to 1 because we return fron search
           setItems([...popular.data.results])
         }
@@ -40,8 +29,8 @@ function App() {
           setItems(oldItems => [...oldItems,...popular.data.results])
         }
         setHeader('popular movies');
-      }
-          }, [searchText,page])
+      
+          }, [page])
   
 
 
@@ -74,7 +63,11 @@ function App() {
      <Switch  style={{width:'100vw', height:'100%'}} >
 
           <Route exact path='/'>
-            <PopularMovies text={searchText}/> 
+            <PopularMovies/> 
+          </Route>
+
+          <Route  path='/search-results/:searchText' >
+              <SearchResults/>
           </Route>
 
           <Route  path='/movies/:id' >

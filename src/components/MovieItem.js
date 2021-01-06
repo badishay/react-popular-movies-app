@@ -13,7 +13,7 @@ const MovieItem = (props) => {
         {
       context=>(
         <div>
-        {props.item.poster_path?(<div className=' my-4 mx-1 w-48 h-72 bg-scroll transition duration-500  transform hover:-translate-y-1 hover:scale-110 cursor-pointer  bg-gray-600 ease-in-out   rounded-lg  p-1/2 shadow-md content-center'
+        {props.item.poster_path?(<div className=' my-4 mx-2 w-48 h-72 bg-scroll transition duration-500  transform hover:-translate-y-1 hover:scale-110 cursor-pointer  bg-gray-600 ease-in-out   rounded-lg  p-1/2 shadow-md content-center'
         style={{backgroundImage:`url(https://image.tmdb.org/t/p/w500/${props.item.poster_path})`, backgroundPosition: 'center',
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
