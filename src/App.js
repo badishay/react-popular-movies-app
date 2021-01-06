@@ -1,6 +1,6 @@
 import './App.css';
-import {Switch, Route, useHistory} from 'react-router-dom'
-import React, {useState,useEffect,Suspense} from 'react'
+import {Switch, Route} from 'react-router-dom'
+import React, {useState,useEffect} from 'react'
 import Navbar from './components/Navbar'
 import PopularMovies from './components/PopularMovies'
 import SearchResults from './components/SearchResults'
@@ -12,28 +12,20 @@ import axios from 'axios'
 
 
 function App() {
-  const [searchText,setSearchText] = useState('');
   const [items,setItems] =useState([]);
   const [page,setPage] = useState(1);
-  const [header,setHeader] = useState('popular movies');
-  let history=useHistory();
   
   useEffect(async() => {
       const apiKey='fd2a4c25ac9eda692e330c4d102133e2'
       const popular= await axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=${page}`);
-      
         if(page===1){//if the page restart to 1 because we return fron search
           setItems([...popular.data.results])
         }
         else{
           setItems(oldItems => [...oldItems,...popular.data.results])
         }
-        setHeader('popular movies');
-      
           }, [page])
   
-
-
   useEffect(() => {
     window.addEventListener('scroll',(e) => {
       const bottom = Math.round(e.target.documentElement.scrollHeight - e.target.documentElement.scrollTop) === e.target.documentElement.clientHeight;
@@ -45,21 +37,14 @@ function App() {
   
   return (
       <MyContext.Provider value={{
-        text:searchText, 
-        callback:(text)=>{
-          history.push('/')
-          setSearchText(text)},
         restart:()=>{
            setPage(1)
-          setSearchText('');
           },
         items: items,
-        header:header,
         page:page,
         morePage:()=>setPage(prev=>prev+1)}}>
     <div>
      <Navbar />
-     <Suspense fallback={<div>Loading...</div>}>
      <Switch  style={{width:'100vw', height:'100%'}} >
 
           <Route exact path='/'>
@@ -89,7 +74,6 @@ function App() {
           </Route>
 
         </Switch>
-        </Suspense>
     </div>
     </MyContext.Provider>
 
