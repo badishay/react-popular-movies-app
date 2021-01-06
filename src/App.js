@@ -18,7 +18,7 @@ function App() {
   useEffect(async() => {
       const apiKey='fd2a4c25ac9eda692e330c4d102133e2'
       const popular= await axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=${page}`);
-        if(page===1){//if the page restart to 1 because we return fron search
+        if(page===1){
           setItems([...popular.data.results])
         }
         else{
