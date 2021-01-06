@@ -19,10 +19,10 @@ function SearchResults() {
         const res= await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${searchText}&language=en-US&page=${page}`);
         await setMovies([...res.data.results]);
         if(res.data.results.length){
-            setHeader(`search results for '${searchText.replace('+', ' ')}'`);
+            setHeader('search results for ');
           }
         else{
-            setHeader('no results :(');
+            setHeader('no results for ');
           }
         setPage(1);
     }, [searchText])
@@ -39,7 +39,7 @@ function SearchResults() {
     return (
             <div className='bg-galaxy min-h-screen' >
                 <div className='uppercase fixed mt-14 cursor-default z-10 w-full text-center tracking-widest bg-black bg-opacity-80 font-thin  text-xl  ' >
-                    <p className='text-red-500'>{header}</p>
+                    <p className='text-gray-300'>{header}{<label className='text-red-500'>'{searchText.replace('+', ' ')}'</label>}</p>
                 </div >
                 <div className='flex flex-wrap justify-evenly pt-20 ' >
                     {movies.map((item,index)=><MovieItem  key={item.id} item={item} id={index} />)}
