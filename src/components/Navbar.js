@@ -11,7 +11,7 @@ const Navbar = (props) => {
         {
       context=>(
           <div className='w-screen z-20 fixed'>
-        <div className='  bg-black w-screen  focus:outline-none flex justify-between py-2'>
+        <div className='  bg-black w-screen  focus:outline-none flex flex-wrap justify-between py-2'>
             <div onClick={
                 ()=>{
                     context.restart()

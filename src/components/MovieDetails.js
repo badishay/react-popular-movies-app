@@ -50,10 +50,9 @@ function MovieDetails() {
   backgroundRepeat: 'no-repeat',
   
   }}>
-      <div className='bg-gray-500 bg-opacity-70 pt-10  cursor-default '>
-          {/* <Image src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`} className=' opacity-50 p-0  '  alt='movie'> */}
-              <div className=' text-gray-900 flex flex-wrap '  >
-                <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} className='  mt-10  w-72 h-96 shadow-2xl mx-10 '   alt='movie'/>
+      <div className='bg-gray-500 bg-opacity-70 pt-8  cursor-default '>
+              <div className=' text-gray-900 flex flex-wrap justify-left pt-12'  >
+                <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} className='    w-72 h-96 shadow-2xl mr-10  '   alt='movie'/>
       {showTrailer? (<div className='container bg-black bg-opacity-80 z-10 fixed '>
                 <div className=' inset-0 h-4/5 my-10  focus:outline-none'>
                     <input type='button' className=' border-4 cursor-pointer bg-black bg-opacity-70 focus:outline-none absolute text-red-500 border-red-500 font-bold hover:text-red-400 hover:border-red-400  text-xl rounded-full px-3 pb-1 p-1 text-center pt-0 ' value='x' onClick={()=>setShowTrailer(false)}/>
@@ -62,19 +61,18 @@ function MovieDetails() {
                     </div>)
                     :null}
                       
-                <div className='mt-10 bg-gradient-to-r from-gray-200 via-gray-300 h-3/4 to-transperent hover:from-gray-100 hover:via-gray-200 bg-opacity-10 hover:bg-opacity-40  p-7 w-96 '>
-                    <p className='text-4xl text-gray-900 font-extrabold font-sans mb-2 '> {movie.title} <p className='font-semibold text-2xl'>{year}</p></p>
-                    <div class="flex flex-warp divide-x-2 divide-black  w-1/2 -ml-3 mr-5  divide-opacity-40 mb-10 ">
+                <div className=' bg-gradient-to-r from-gray-200 via-gray-300 h-3/4 to-transperent hover:from-gray-100 hover:via-gray-200 bg-opacity-10 hover:bg-opacity-40  pb-7 pt-3 px-5   '>
+                    <p className='text-4xl text-gray-900 font-bold font-sans mb-2 '> {movie.title} <p className='font-semibold text-2xl'>{year}</p></p>
+                    <div class="flex flex-warp divide-x-2 divide-black   -ml-3   divide-opacity-40 mb-10 ">
                         {genres.map(genre=><p className='break-words px-3 font-bold cursor-pointer hover:text-yellow-600 ' 
-                        onClick={()=>history.push(`/genre/${genre.id}/${genre.name}`)}
-                        >
+                        onClick={()=>history.push(`/genre/${genre.id}/${genre.name}`)}>
                             {genre.name}
                             </p>)}
                     </div>
                     {trailerKey?
                      <input type='button' value='trailer >' className='px-2 mb-5 rounded-full font-bold text-yellow-50 bg-red-700 pb-1 cursor-pointer hover:bg-red-600 text-center focus:outline-none' onClick={()=>setShowTrailer(true)}/>
                      :null}
-                    {movie.overview?<p className='h-auto tracking-wide font-semibold text-sm max-w-xl '><header className='font-bold mb-2 text-2xl text-gray-800'>overview</header> {movie.overview}</p>:null}
+                    {movie.overview?<p className='h-auto tracking-wide max-w-lg font-semibold text-sm  '><header className='font-bold mb-2 text-2xl text-gray-800'>overview</header> {movie.overview}</p>:null}
                 </div>
                 
             </div >
