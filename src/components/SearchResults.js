@@ -1,41 +1,52 @@
 import React, {useState,useEffect} from 'react'
+import {useParams} from 'react-router-dom'
+import axios from 'axios'
 import MovieItem from './MovieItem'
-import MyContext from './myContext'
 
+function SearchResults() {
+    const apiKey='fd2a4c25ac9eda692e330c4d102133e2';
+    const [movies, setMovies] = useState([]);
+    const [page, setPage] = useState(1);
+    const [header,setHeader] = useState('');
+    const {searchText}= useParams();
 
+    useEffect(async() => {
+        const res= await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${searchText}&language=en-US&page=${page}`);
+        await setMovies(prev=>[...prev,...res.data.results]);
+    }, [page])
 
-const SearchResults = (props) => {
-   
-  
+    useEffect(async() => {
+        const res= await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${searchText}&language=en-US&page=${page}`);
+        await setMovies([...res.data.results]);
+        if(res.data.results.length){
+            setHeader('search results for ');
+          }
+        else{
+            setHeader('no results for ');
+          }
+        setPage(1);
+    }, [searchText])
     
-    
-    return (<MyContext.Consumer>
-        {
-      context=>(
-        
-            <div className='bg-galaxy min-h-screen ' >
-                <h1>hello</h1>
-                
-                <div className='uppercase fixed mt-14 cursor-default z-10 w-full text-center tracking-widest bg-black bg-opacity-80 font-thin  text-xl  pb-3' >
-                    <p className='text-red-500 '>{context.header}</p>
-            </div >
-                <div className='  flex flex-wrap justify-center  pt-20 px-2' >
-                    {context.items.map(item=><MovieItem  key={item.id} item={item}/>)
-                     }
+    useEffect(() => {
+        window.addEventListener('scroll',(e) => {
+            const bottom = Math.round(e.target.documentElement.scrollHeight - e.target.documentElement.scrollTop) === e.target.documentElement.clientHeight;
+            if (bottom){
+              setPage(prev=>prev+1);
+            }
+          })
+    }, []) 
+
+    return (
+            <div className='bg-galaxy min-h-screen' >
+                <div className='uppercase fixed mt-14 cursor-default z-20 w-full text-center tracking-widest bg-black bg-opacity-80 font-thin  text-xl  ' >
+                    <p className='text-gray-300'>{header}{<label className='text-red-500'>'{searchText.replace('+', ' ')}'</label>}</p>
+                </div >
+                <div className='flex flex-wrap justify-evenly pt-20 ' >
+                    {movies.map((item,index)=><MovieItem  key={item.id} item={item} id={index} />)}
                 </div>
-                {/* <div className='flex justify-center'>  
-                    <input type='button' value='load more'
-                     className='cursor-pointer w-1/2 h-14 mb-10 tracking-widest rounded opacity-70 bg-gray-700 text-gray-400 mt-1 uppercase hover:bg-gray-400 hover:text-gray-700 font-bold text-2xl focus:outline-none '
-                     onClick={()=>context.morePage()}/>
-                </div> */}
         </div>
-         )
-        }
 
-  </MyContext.Consumer>
     )
 }
 
 export default SearchResults
-
-
