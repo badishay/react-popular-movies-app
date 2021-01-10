@@ -39,7 +39,7 @@ function SearchResults() {
     return (
             <div className='bg-galaxy min-h-screen' >
                 <div className='uppercase fixed mt-14 cursor-default z-10 w-full text-center tracking-widest bg-black bg-opacity-80 font-thin  text-xl  ' >
-                    <p className='text-gray-300'>{header}{<label className='text-red-500'>'{searchText.replace('+', ' ')}'</label>}</p>
+                    <p className='text-gray-100'>{header}{<label className='text-red-500'>'{searchText.replace('+', ' ')}'</label>}</p>
                 </div >
                 <div className='flex flex-wrap justify-evenly pt-20 ' >
                     {movies.map((item,index)=><MovieItem  key={item.id} item={item} id={index} />)}
