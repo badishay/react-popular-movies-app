@@ -44,6 +44,9 @@ function SearchResults() {
                 <div className='flex flex-wrap justify-evenly pt-20 ' >
                     {movies.map((item,index)=><MovieItem  key={item.id} item={item} id={index} />)}
                 </div>
+                <div className='h-16 font-thin py-3 tracking-widest bg-white bg-opacity-50 text-center text-white text-2xl z-20'>
+               loading...
+            </div>
         </div>
 
     )

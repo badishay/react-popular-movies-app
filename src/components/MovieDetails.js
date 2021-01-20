@@ -50,8 +50,6 @@ function MovieDetails() {
   
   }}>
       <div className='bg-gray-500 bg-opacity-70 pt-8  cursor-default '>
-              <div className=' text-gray-900 flex flex-wrap justify-left pt-12'  >
-                <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} className='    w-72 h-96 shadow-2xl mr-10  '   alt='movie'/>
       {showTrailer? (<div className='container bg-black bg-opacity-80 z-10 fixed '>
                 <div className=' inset-0 h-4/5 my-10  focus:outline-none'>
                     <input type='button' className=' border-4 cursor-pointer bg-black bg-opacity-70 focus:outline-none absolute text-red-500 border-red-500 font-bold hover:text-red-400 hover:border-red-400  text-xl rounded-full px-3 pb-1 p-1 text-center pt-0 ' value='x' onClick={()=>setShowTrailer(false)}/>
@@ -59,6 +57,8 @@ function MovieDetails() {
                     </div>
                     </div>)
                     :null}
+              <div className=' text-gray-900 flex flex-wrap justify-left pt-12'  >
+                <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} className='    w-72 h-96 shadow-2xl mr-10  '   alt='movie'/>
                       
                 <div className=' bg-gradient-to-r from-gray-200 via-gray-300 h-3/4 to-transperent hover:from-gray-100 hover:via-gray-200 bg-opacity-10 hover:bg-opacity-40  pb-7 pt-3 px-5   '>
                     <p className='text-4xl text-gray-900 font-bold font-sans mb-2 '> {movie.title} <p className='font-semibold text-2xl'>{year}</p></p>

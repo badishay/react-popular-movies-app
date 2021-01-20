@@ -40,7 +40,7 @@ function Genre() {
                 {movies.map((item)=><MovieItem  key={item.id} item={item} />)}
             </div>
             <div className='h-16 font-thin py-3 tracking-widest bg-white bg-opacity-50 text-center text-white text-2xl z-20'>
-               loading more...
+               loading...
             </div>
         </div>
     )

@@ -1,4 +1,4 @@
-import React, {useState,useEffect} from 'react'
+import React from 'react'
 import MovieItem from './MovieItem'
 import MyContext from './myContext'
 
@@ -6,10 +6,6 @@ import MyContext from './myContext'
 // holds the base to show the popular movies and search results
 
 const PopularMovies = () => {
-   
-  
-    
-    
     return (<MyContext.Consumer>
         {
       context=>(
@@ -20,6 +16,9 @@ const PopularMovies = () => {
                 <div className='  flex flex-wrap justify-center pt-20 ' >
                     {context.items.map((item,index)=><MovieItem  key={item.id} item={item} id={index} />)}
                 </div>
+                <div className='h-16 font-thin py-3 tracking-widest bg-white bg-opacity-50 text-center text-white text-2xl z-20'>
+               loading...
+            </div>
         </div>
          )
         }
