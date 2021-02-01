@@ -19,7 +19,7 @@ function ActorDetails() {
 
     //getting The films in which the actor participated
     useEffect(async() => {
-        const res = await axios.get(`https://api.themoviedb.org/3/person/${id}/movie_credits?api_key=${apiKey}&language=en-US`)
+        const res = await axios.get(`https://api.themoviedb.org/3/person/${id}/movie_credits?api_key=${apiKey}&sort_by=popularity.asc&language=en-US`)
         console.log(res.data);
         setCredits(res.data.cast);
     }, [])

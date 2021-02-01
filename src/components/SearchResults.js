@@ -8,15 +8,19 @@ function SearchResults() {
     const [movies, setMovies] = useState([]);
     const [page, setPage] = useState(1);
     const [header,setHeader] = useState('');
+    const [loading,setLoading] = useState(true);
     const {searchText}= useParams();
 
     useEffect(async() => {
-        const res= await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${searchText}&sort_by=popularity.desc&language=en-US&page=${page}`);
-        await setMovies(prev=>[...prev,...res.data.results]);
+        const res= await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${searchText}&language=en-US&page=${page}`);
+         setMovies(prev=>[...prev,...res.data.results]);
+         if(res.data.results){
+             setLoading(false);
+         }
     }, [page])
 
     useEffect(async() => {
-        const res= await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${searchText}&sort_by=popularity.desc&language=en-US&page=${page}`);
+        const res= await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${searchText}&language=en-US&page=${page}`);
         await setMovies([...res.data.results]);
         if(res.data.results.length){
             setHeader('search results for ');
@@ -44,9 +48,9 @@ function SearchResults() {
                 <div className='flex flex-wrap justify-evenly pt-20 ' >
                     {movies.map((item,index)=><MovieItem  key={item.id} item={item} id={index} />)}
                 </div>
-                <div className='h-16 font-thin py-3 tracking-widest bg-white bg-opacity-50 text-center text-white text-2xl z-20'>
+                {loading&&<div className='h-16 font-thin py-3 tracking-widest bg-white bg-opacity-50 text-center text-white text-2xl z-20'>
                loading...
-            </div>
+            </div>}
         </div>
 
     )

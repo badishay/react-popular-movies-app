@@ -24,7 +24,7 @@ const MovieItem = (props) => {
           }}>
        
             {title?<div className='absolute inset-x-0 bottom-0 text-left h-1/5 bg-black bg-opacity-80 border-b rounded-b-lg border-gray-300 '>
-                        <p className=' text-gray-200 absolute ml-1 font-bold  text-sm pt-3 p-1' >{`${props.item.title} (${props.item.release_date.slice(0,4)})`}</p>
+                        <p className=' text-gray-200 absolute ml-1 font-bold  text-sm pt-3 p-1' >{`${props.item.title} (${props.item.release_date&&props.item.release_date.slice(0,4)})`}</p>
                      </div>
                :null}            
      </div>):null} 
