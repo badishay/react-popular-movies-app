@@ -11,12 +11,12 @@ function SearchResults() {
     const {searchText}= useParams();
 
     useEffect(async() => {
-        const res= await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${searchText}&language=en-US&page=${page}`);
+        const res= await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${searchText}&sort_by=popularity.desc&language=en-US&page=${page}`);
         await setMovies(prev=>[...prev,...res.data.results]);
     }, [page])
 
     useEffect(async() => {
-        const res= await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${searchText}&language=en-US&page=${page}`);
+        const res= await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${searchText}&sort_by=popularity.desc&language=en-US&page=${page}`);
         await setMovies([...res.data.results]);
         if(res.data.results.length){
             setHeader('search results for ');
