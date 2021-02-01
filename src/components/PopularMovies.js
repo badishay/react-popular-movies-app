@@ -29,4 +29,3 @@ const PopularMovies = () => {
 
 export default PopularMovies
 
-
