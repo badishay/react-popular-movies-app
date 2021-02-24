@@ -11,6 +11,8 @@ function SearchResults() {
     const [loading,setLoading] = useState(true);
     const {searchText}= useParams();
 
+    
+
     useEffect(async() => {
         const res= await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${searchText}&language=en-US&page=${page}`);
          setMovies(prev=>[...prev,...res.data.results]);
